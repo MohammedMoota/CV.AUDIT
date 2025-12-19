@@ -130,6 +130,17 @@ button[kind="primary"] { background: #4ade80 !important; }
 .rec-item { background: #e0e7ff; } .rec-item:before { content: "📘"; }
 .deep-dive { font-family: 'Space Mono', monospace; font-size: 0.95rem; line-height: 1.6; background: #e0f2fe; padding: 25px; border: 3px solid #000; box-shadow: 8px 8px 0px #000; }
 footer {display: none;}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2rem !important; transform: rotate(0deg) !important; width: 100%; text-align: center; margin-bottom: 20px !important; }
+    .big-score { font-size: 3.5rem !important; }
+    .analysis-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+    .res-box { padding: 20px !important; margin: 10px 0 !important; box-shadow: 8px 8px 0px #3b82f6 !important; }
+    .neo-card { padding: 15px !important; margin-bottom: 15px !important; }
+    .score-header { flex-direction: column; text-align: center; align-items: center; }
+    .stButton>button { height: 60px !important; font-size: 1rem !important; margin: 5px 0 !important; width: 100% !important; }
+}
 """
 st.markdown(f"<style>{NEO_CSS}</style>", unsafe_allow_html=True)
 
@@ -179,11 +190,14 @@ with c2:
     pdf = st.file_uploader("pdf", type="pdf", label_visibility="collapsed")
     st.markdown("</div>", unsafe_allow_html=True)
 
-b1, b2, b3, b4 = st.columns(4, gap="medium")
-with b1: btn_scan = st.button("ANALYZE")
-with b2: btn_gap = st.button("SKILLS")
-with b3: btn_fit = st.button("FIT SCORE", type="primary")
-with b4: btn_chat = st.button("INTERVIEW")
+# BUTTONS: 2x2 GRID FOR BETTER MOBILE/DESKTOP LAYOUT
+b_row1 = st.columns(2, gap="small")
+with b_row1[0]: btn_scan = st.button("ANALYZE", use_container_width=True)
+with b_row1[1]: btn_gap = st.button("SKILLS", use_container_width=True)
+
+b_row2 = st.columns(2, gap="small")
+with b_row2[0]: btn_fit = st.button("FIT SCORE", type="primary", use_container_width=True)
+with b_row2[1]: btn_chat = st.button("INTERVIEW", use_container_width=True)
 
 if 'res' not in st.session_state: st.session_state.res = None
 if 'mode' not in st.session_state: st.session_state.mode = None
