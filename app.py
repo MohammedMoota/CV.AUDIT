@@ -139,7 +139,7 @@ footer {display: none;}
     .res-box { padding: 20px !important; margin: 10px 0 !important; box-shadow: 8px 8px 0px #3b82f6 !important; }
     .neo-card { padding: 15px !important; margin-bottom: 15px !important; }
     .score-header { flex-direction: column; text-align: center; align-items: center; }
-    .stButton>button { height: 50px !important; font-size: 0.9rem !important; margin-bottom: 10px !important; }
+    .stButton>button { height: 60px !important; font-size: 1rem !important; margin: 5px 0 !important; width: 100% !important; }
 }
 """
 st.markdown(f"<style>{NEO_CSS}</style>", unsafe_allow_html=True)
@@ -190,11 +190,14 @@ with c2:
     pdf = st.file_uploader("pdf", type="pdf", label_visibility="collapsed")
     st.markdown("</div>", unsafe_allow_html=True)
 
-b1, b2, b3, b4 = st.columns(4, gap="medium")
-with b1: btn_scan = st.button("ANALYZE")
-with b2: btn_gap = st.button("SKILLS")
-with b3: btn_fit = st.button("FIT SCORE", type="primary")
-with b4: btn_chat = st.button("INTERVIEW")
+# BUTTONS: 2x2 GRID FOR BETTER MOBILE/DESKTOP LAYOUT
+b_row1 = st.columns(2, gap="small")
+with b_row1[0]: btn_scan = st.button("ANALYZE", use_container_width=True)
+with b_row1[1]: btn_gap = st.button("SKILLS", use_container_width=True)
+
+b_row2 = st.columns(2, gap="small")
+with b_row2[0]: btn_fit = st.button("FIT SCORE", type="primary", use_container_width=True)
+with b_row2[1]: btn_chat = st.button("INTERVIEW", use_container_width=True)
 
 if 'res' not in st.session_state: st.session_state.res = None
 if 'mode' not in st.session_state: st.session_state.mode = None
