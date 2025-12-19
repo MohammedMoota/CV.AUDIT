@@ -130,6 +130,17 @@ button[kind="primary"] { background: #4ade80 !important; }
 .rec-item { background: #e0e7ff; } .rec-item:before { content: "📘"; }
 .deep-dive { font-family: 'Space Mono', monospace; font-size: 0.95rem; line-height: 1.6; background: #e0f2fe; padding: 25px; border: 3px solid #000; box-shadow: 8px 8px 0px #000; }
 footer {display: none;}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2rem !important; transform: rotate(0deg) !important; width: 100%; text-align: center; margin-bottom: 20px !important; }
+    .big-score { font-size: 3.5rem !important; }
+    .analysis-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+    .res-box { padding: 20px !important; margin: 10px 0 !important; box-shadow: 8px 8px 0px #3b82f6 !important; }
+    .neo-card { padding: 15px !important; margin-bottom: 15px !important; }
+    .score-header { flex-direction: column; text-align: center; align-items: center; }
+    .stButton>button { height: 50px !important; font-size: 0.9rem !important; margin-bottom: 10px !important; }
+}
 """
 st.markdown(f"<style>{NEO_CSS}</style>", unsafe_allow_html=True)
 
