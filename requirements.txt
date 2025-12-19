@@ -1,6 +1,6 @@
 streamlit
-google-genai
+groq
 python-dotenv
-matplotlib
 pymupdf
-pillow
+pdfplumber
+reportlab
